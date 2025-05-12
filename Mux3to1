@@ -1,0 +1,31 @@
+Name     mux_3a1_4bits ;
+PartNo   00 ;
+Date     12/05/2025 ;
+Revision 01 ;
+Designer E4 ;
+Company  ITAM ;
+Assembly None ;
+Location  ;
+Device   g22v10 ;
+
+/* *************** INPUT PINS *********************/
+
+PIN [2..5]    = [SUM0, SUM1, SUM2, SUM3];
+PIN [6..9]    = [RES0, RES1, RES2, RES3];
+PIN [14..17]  = [MUL0, MUL1, MUL2, MUL3];
+
+PIN 10 = S0;
+PIN 11 = S1;
+
+/* *************** OUTPUT PINS *********************/
+
+PIN [18..21] = [OUT0, OUT1, OUT2, OUT3];
+
+/* *************** LOGIC **************************/
+
+FIELD SEL = [S0, S1];
+
+OUT0 = (SEL:0 & SUM0) # (SEL:1 & RES0) # (SEL:2 & MUL0);
+OUT1 = (SEL:0 & SUM1) # (SEL:1 & RES1) # (SEL:2 & MUL1);
+OUT2 = (SEL:0 & SUM2) # (SEL:1 & RES2) # (SEL:2 & MUL2);
+OUT3 = (SEL:0 & SUM3) # (SEL:1 & RES3) # (SEL:2 & MUL3);
